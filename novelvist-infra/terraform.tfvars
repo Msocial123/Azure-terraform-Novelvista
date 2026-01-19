@@ -1,5 +1,5 @@
 # Azure Configuration
-subscription_id                 = "your subscription_id"
+#subscription_id                 = "your subscription_id"
 resource_group_name             = "azureskf-T"
 environment                     = "dev"
 project_name                    = "novelvista"
