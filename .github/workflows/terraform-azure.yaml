@@ -6,7 +6,7 @@ on:
       - terraform-aks
     paths:
       - novelist-infra/**
-      - terraform-azure/**
+     
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
       matrix:
         root:
           - ./novelist-infra
-          - ./terraform-azure
+          
 
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
