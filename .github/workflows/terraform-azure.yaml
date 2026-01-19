@@ -3,7 +3,7 @@ name: Terraform Azure Deployment
 on:
   push:
     branches:
-      - Three-Tier-Architecture
+      - terraform-aks
     paths:
       - novelist-infra/**
       - terraform-azure/**
