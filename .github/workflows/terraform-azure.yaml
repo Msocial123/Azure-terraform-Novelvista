@@ -17,7 +17,8 @@ jobs:
     strategy:
       matrix:
         root:
-          - novelist-infra
+          - ./novelist-infra
+          - ./terraform-azure
 
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
