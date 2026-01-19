@@ -23,6 +23,7 @@ jobs:
     env:
       # Pass Terraform variables via TF_VAR_ prefix
       TF_VAR_subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
@@ -47,7 +48,7 @@ jobs:
           ls -la
 
       - name: Terraform Init
-        run: terraform init -input=false
+        run: terraform init
 
       - name: Terraform Format Check
         run: terraform fmt -check
