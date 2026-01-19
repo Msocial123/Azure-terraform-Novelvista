@@ -18,10 +18,8 @@ jobs:
       matrix:
         root:
           - novelist-infra
-          - terraform-azure
 
     env:
-      # Azure authentication (Terraform automatically picks these up)
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
@@ -39,6 +37,11 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.6.6
+
+      - name: Debug folder structure
+        run: |
+          pwd
+          ls -la
 
       - name: Terraform Init
         run: terraform init
