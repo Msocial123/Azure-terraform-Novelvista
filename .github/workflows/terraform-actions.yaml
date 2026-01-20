@@ -10,7 +10,7 @@ on:
 
 jobs:
   terraform:
-    name: Terraform Apply
+    name: Terraform Destroy and Apply
     runs-on: ubuntu-latest
 
     strategy:
@@ -55,12 +55,14 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Terraform Destroy  
-        run: terraform destroy
+      # ✅ STEP 1 — DESTROY EXISTING RESOURCES FIRST
+      - name: Terraform Destroy (Existing Infra)
+        run: terraform destroy -input=false -auto-approve -var-file="terraform.tfvars"
 
+      # ✅ STEP 2 — CREATE NEW PLAN AFTER DESTROY
       - name: Terraform Plan
         run: terraform plan -input=false -var-file="terraform.tfvars" -out=tfplan
 
+      # ✅ STEP 3 — APPLY THE NEW PLAN
       - name: Terraform Apply
         run: terraform apply -input=false -auto-approve tfplan
- 
