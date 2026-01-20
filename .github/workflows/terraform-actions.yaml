@@ -55,6 +55,9 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
+      - name: Terraform Destroy  
+        run: terraform destroy
+
       - name: Terraform Plan
         run: terraform plan -input=false -var-file="terraform.tfvars" -out=tfplan
 
